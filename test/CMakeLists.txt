@@ -14,3 +14,9 @@ add_test(NAME getopt_simple_unknown_arg COMMAND getopt_simple -u 666)
 set_tests_properties(getopt_simple_unknown_arg PROPERTIES WILL_FAIL ON)
 
 # FIXME: add tests for getopt_long and getopt_long_only
+
+# Test usage of getopt.h in multiple compilation units
+add_executable(getopt_mul getopt_mul1.c getopt_mul2.c)
+target_link_libraries(getopt_mul getopt::getopt)
+
+add_test(NAME getopt_mul COMMAND getopt_mul)
