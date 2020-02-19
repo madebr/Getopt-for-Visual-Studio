@@ -20,6 +20,13 @@ target_include_directories(getopt INTERFACE
     "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
+option(GETOPT_TESTING "Enable tests for getopt")
+if(GETOPT_TESTING)
+    enable_testing()
+    add_subdirectory(test)
+endif()
+
+
 if(NOT GETOPT_SUBPROJECT)
     configure_package_config_file(getopt-config.cmake.in getopt-config.cmake
         INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/getopt")
