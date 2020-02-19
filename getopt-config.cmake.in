@@ -1,0 +1,8 @@
+enable_language(C)
+if(NOT "${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
+    message(FATAL_ERROR "@PROJECT_NAME@ is only available on MSVC")
+endif()
+
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/getopt.cmake")
